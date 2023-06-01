@@ -39,12 +39,10 @@ def swarm_a():
     global_best_fitness = float('inf')
     global_best_position = [0, 0]
 
-    for iteration in range(max_iterations):
-        # Aktualizacja pozycji i prędkości cząstek
+    for _ in range(max_iterations):
         for particle in swarm:
             update_velocity_and_position(particle, global_best_position)
 
-            # Aktualizacja najlepszego znalezionego rozwiązania
             particle_fitness = f(particle["position"][0], particle["position"][1])
             if particle_fitness < particle["best_fitness"]:
                 particle["best_fitness"] = particle_fitness
@@ -61,7 +59,6 @@ def f(x, y):
     return 4*x**2 - 4*x*y + 2*y**2
 
 
-# Wywołanie algorytmu roju
 best_solution = swarm_a()
 minimum_value = f(best_solution[0], best_solution[1])
 
